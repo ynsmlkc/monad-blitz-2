@@ -52,19 +52,16 @@ export default function AudioVisualizer({ isActive, audioLevel }: AudioVisualize
         const x = startX + index * (BAR_WIDTH + BAR_GAP)
         const y = (rect.height - height) / 2
 
-        // Create gradient for each bar
         const gradient = ctx.createLinearGradient(x, y, x, y + height)
 
         if (isActive) {
-          // Blue gradient when active
-          gradient.addColorStop(0, "oklch(0.75 0.22 240)")
-          gradient.addColorStop(0.5, "oklch(0.65 0.22 240)")
-          gradient.addColorStop(1, "oklch(0.55 0.18 240)")
+          gradient.addColorStop(0, "oklch(0.75 0.22 260)")
+          gradient.addColorStop(0.5, "oklch(0.7 0.2 290)")
+          gradient.addColorStop(1, "oklch(0.65 0.18 320)")
         } else {
-          // Muted gradient when inactive
-          gradient.addColorStop(0, "oklch(0.85 0.05 240)")
-          gradient.addColorStop(0.5, "oklch(0.75 0.05 240)")
-          gradient.addColorStop(1, "oklch(0.65 0.05 240)")
+          gradient.addColorStop(0, "oklch(0.85 0.08 260)")
+          gradient.addColorStop(0.5, "oklch(0.8 0.08 290)")
+          gradient.addColorStop(1, "oklch(0.75 0.08 320)")
         }
 
         ctx.fillStyle = gradient
@@ -103,7 +100,7 @@ export default function AudioVisualizer({ isActive, audioLevel }: AudioVisualize
 
       {isActive && (
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute inset-0 bg-primary/5 rounded-lg blur-3xl animate-pulse" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/10 via-secondary/10 to-accent/10 rounded-lg blur-3xl animate-pulse" />
         </div>
       )}
     </div>
